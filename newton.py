@@ -8,7 +8,15 @@ def f(x):
 
 
 def optimize (f, xt, xt1, epsilon, accuracy):
+    """Get back the minimum value of a function
 
+    Keyword arguments:
+    f -- numpy function
+    xt -- value
+    xt1 -- value
+    epsilon -- value
+    accuracy -- value
+    """
     if type(xt) != int:
         raise TypeError(f"xt must be numeric")
          
