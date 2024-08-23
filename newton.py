@@ -1,3 +1,6 @@
+import numdifftools as nd
+import scipy
+
 def f(x):
     """Get back the value of a function to a defined point.
 
@@ -7,7 +10,7 @@ def f(x):
     return (x + 3) * (x + 3)
 
 
-def optimize (f, xt, xt1, epsilon, accuracy):
+def optimize_netwons_method (f, xt, xt1, epsilon, accuracy):
     """Get back the minimum value of a function
 
     Keyword arguments:
@@ -32,5 +35,17 @@ def optimize (f, xt, xt1, epsilon, accuracy):
         xt1 = a
     
     return xt
+
+def optimize_multivariate_newtons_method(x0, f, tol=1e-4):
+    xt1 = x0
+    xt = x0 * 2
+    while abs(xt-xt1) > 0.0001:
+        xt1 = xt
+        grad = nd.Gradient(f)
+        hessian = nd.Hessian(f)
+    
+        xt= xt1 - scipy.linalg.solve(hessian(xt1), grad(xt1))
+    return xt
+    
 
 
