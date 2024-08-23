@@ -19,6 +19,9 @@ def optimize (f, xt, xt1, epsilon, accuracy):
     """
     if type(xt) != int:
         raise TypeError(f"xt must be numeric")
+
+    if accuracy < 1e-8:
+        raise AssertionError(f"accuracy is too small")
          
     while abs(xt-xt1) > accuracy:
 
